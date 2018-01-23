@@ -1,4 +1,4 @@
-package org.fmi.ai.clio;
+package org.fmi.ai.clio.crawler;
 
 import org.apache.commons.lang3.StringUtils;
 

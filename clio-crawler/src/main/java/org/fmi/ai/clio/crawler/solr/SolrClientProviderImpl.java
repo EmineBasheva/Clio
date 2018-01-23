@@ -1,12 +1,12 @@
-package org.fmi.ai.clio.solr;
+package org.fmi.ai.clio.crawler.solr;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
-import org.fmi.ai.clio.ClioModule.SolrURL;
-import org.fmi.ai.clio.document.DocumentCrawlerJob;
+import org.fmi.ai.clio.crawler.ClioModule.SolrURL;
+import org.fmi.ai.clio.crawler.document.DocumentCrawlerJob;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

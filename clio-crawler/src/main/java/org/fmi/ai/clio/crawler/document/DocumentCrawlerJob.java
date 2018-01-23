@@ -1,4 +1,4 @@
-package org.fmi.ai.clio.document;
+package org.fmi.ai.clio.crawler.document;
 
 import java.io.IOException;
 import java.util.Iterator;

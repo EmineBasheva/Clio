@@ -1,10 +1,10 @@
-package org.fmi.ai.clio;
+package org.fmi.ai.clio.crawler;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.fmi.ai.clio.document.DocumentCrawlerJob;
+import org.fmi.ai.clio.crawler.document.DocumentCrawlerJob;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

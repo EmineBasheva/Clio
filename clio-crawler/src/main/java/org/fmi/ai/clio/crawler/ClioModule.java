@@ -1,4 +1,4 @@
-package org.fmi.ai.clio;
+package org.fmi.ai.clio.crawler;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,9 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.apache.solr.client.solrj.SolrClient;
-import org.fmi.ai.clio.document.DocumentSupplier;
-import org.fmi.ai.clio.document.DocumentSupplierImpl;
-import org.fmi.ai.clio.solr.SolrClientProviderImpl;
+import org.fmi.ai.clio.crawler.document.DocumentSupplier;
+import org.fmi.ai.clio.crawler.document.DocumentSupplierImpl;
+import org.fmi.ai.clio.crawler.solr.SolrClientProviderImpl;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.BindingAnnotation;

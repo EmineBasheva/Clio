@@ -1,4 +1,4 @@
-package org.clio.analytics;
+package org.fmi.ai.clio.analytics;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

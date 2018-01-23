@@ -1,4 +1,4 @@
-package org.fmi.ai.clio.document;
+package org.fmi.ai.clio.crawler.document;
 
 import java.util.Collections;
 import java.util.HashMap;

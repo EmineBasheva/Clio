@@ -1,4 +1,4 @@
-package org.fmi.ai.clio.document;
+package org.fmi.ai.clio.crawler.document;
 
 import java.util.Iterator;
 import java.util.function.Supplier;
