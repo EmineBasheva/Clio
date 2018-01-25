@@ -4,7 +4,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.fmi.ai.clio.crawler.document.DocumentCrawlerJob;
+import org.fmi.ai.clio.crawler.solr.SolrTopicPostSupplyJob;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +24,7 @@ public class ClioMain {
 		      .getRequiredLongProperty(CRAWLER_INITIAL_BACKOFF_SECONDS_PROPERTY);
 		long period = Systems.getRequiredLongProperty(CRAWLER_PERIOD_SECONDS_PROPERTY);
 
-		DocumentCrawlerJob crawlerJob = injector.getInstance(DocumentCrawlerJob.class);
+		SolrTopicPostSupplyJob crawlerJob = injector.getInstance(SolrTopicPostSupplyJob.class);
 
 		ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 		executorService.scheduleAtFixedRate(crawlerJob, initialBackoff, period,

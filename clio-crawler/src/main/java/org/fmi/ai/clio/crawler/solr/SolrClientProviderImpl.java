@@ -6,13 +6,12 @@ import javax.inject.Provider;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.fmi.ai.clio.crawler.ClioModule.SolrURL;
-import org.fmi.ai.clio.crawler.document.DocumentCrawlerJob;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SolrClientProviderImpl implements Provider<SolrClient> {
 
-	private final static Logger LOG = LoggerFactory.getLogger(DocumentCrawlerJob.class);
+	private final static Logger LOG = LoggerFactory.getLogger(SolrTopicPostSupplyJob.class);
 
 	private final HttpSolrClient.Builder sorlClientBuilder;
 	private final String solrUrl;
