@@ -1,5 +1,6 @@
 package org.fmi.ai.clio.crawler;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +32,7 @@ public class ClioMain {
 		      TimeUnit.SECONDS);
 
 		while (true) {
-			LOG.info("Clio is still running...");
+			LOG.info("{} - Clio is still running...", LocalDateTime.now());
 			Thread.sleep(TimeUnit.MINUTES.toMillis(1));
 		}
 	}

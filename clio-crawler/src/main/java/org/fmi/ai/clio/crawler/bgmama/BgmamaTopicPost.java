@@ -11,8 +11,8 @@ public class BgmamaTopicPost {
 	private final String author;
 	private final int authorPosts;
 
-	private BgmamaTopicPost(String topicName, long postTimestamp, int thankYouCount,
-	      String postURL, String postText, String author, int authorPosts) {
+	private BgmamaTopicPost(String topicName, long postTimestamp, int thankYouCount, String postURL, String postText,
+			String author, int authorPosts) {
 		this.topicName = topicName;
 		this.postTimestamp = postTimestamp;
 		this.thankYouCount = thankYouCount;
@@ -102,11 +102,10 @@ public class BgmamaTopicPost {
 		public BgmamaTopicPost build() {
 			if (postText == null || postURL == null) {
 				throw new IllegalArgumentException(
-				      "Missing required parameters. Make sure the the posts has text or URL.");
+						"Missing required parameters. Make sure the the posts has text or URL.");
 			}
 
-			return new BgmamaTopicPost(topicName, postTimestamp, thankYouCount, postURL,
-			      postText, author, authorPosts);
+			return new BgmamaTopicPost(topicName, postTimestamp, thankYouCount, postURL, postText, author, authorPosts);
 		}
 	}
 }

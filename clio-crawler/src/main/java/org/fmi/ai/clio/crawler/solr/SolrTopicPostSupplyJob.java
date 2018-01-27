@@ -1,5 +1,6 @@
 package org.fmi.ai.clio.crawler.solr;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 
 import javax.inject.Inject;
@@ -42,20 +43,29 @@ public class SolrTopicPostSupplyJob implements Runnable {
 		try (SolrClient solr = sorlClientProvider.get()) {
 			producer.start();
 
-			solr.add(new Iterator<SolrInputDocument>() {
+			LOG.info("{} - Has Consumer next? - {}", LocalDateTime.now(),
+					consumer.hasNext());
+
+			LOG.info("{} - Has Consumer any? - {}", LocalDateTime.now(),
+					consumer.hasAny());
+			
+			Iterator<SolrInputDocument> iter = new Iterator<SolrInputDocument>() {
 				@Override
 				public SolrInputDocument next() {
 					BgmamaTopicPost post = consumer.next();
 
 					SolrInputDocument sid = new SolrInputDocument();
-					sid.addField("url", post.getPostURL());
-					sid.addField("text", post.getPostText());
-					sid.addField("author", post.getAuthor());
+					sid.addField("post_url", post.getPostURL());
+					sid.addField("post_text", post.getPostText());
+					sid.addField("post_author", post.getAuthor());
 					sid.addField("topic_name", post.getTopicName());
 					sid.addField("author_posts", post.getAuthorPosts());
-					sid.addField("thank_you_count", post.getThankYouCount());
-					sid.addField("timestamp", post.getPostTimestamp());
+					sid.addField("post_thank_you_count", post.getThankYouCount());
+					sid.addField("post_timestamp", post.getPostTimestamp());
 
+					LOG.info("{} - Created SolrInputDocument - {}", LocalDateTime.now(),
+							post.getTopicName());
+					
 					return sid;
 				}
 
@@ -63,8 +73,12 @@ public class SolrTopicPostSupplyJob implements Runnable {
 				public boolean hasNext() {
 					return consumer.hasNext();
 				}
-			});
+			};
+			
+			solr.add(iter);
+			LOG.info("{} - Before commit", LocalDateTime.now());
 			solr.commit();
+			LOG.info("{} - After commit", LocalDateTime.now());
 		} catch (Exception e) {
 			LOG.error("Could not feed the supplied documents to Solr", e);
 			consumer.close();

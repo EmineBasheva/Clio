@@ -16,6 +16,11 @@ public class BgmamaTopicPostCollectorImpl implements BgmamaTopicPostCollector {
 		this.isClosed = new AtomicBoolean(false);
 	}
 
+	public boolean hasAny(){
+		boolean res = posts.isEmpty();
+		return !res;
+	}
+	
 	@Override
 	public void add(BgmamaTopicPost post) {
 		posts.add(post);
@@ -28,12 +33,12 @@ public class BgmamaTopicPostCollectorImpl implements BgmamaTopicPostCollector {
 
 	@Override
 	public boolean hasNext() {
-		return !isClosed.get();
+		return !isClosed.get() || !posts.isEmpty();
 	}
 
 	@Override
 	public synchronized BgmamaTopicPost next() {
-		if (isClosed.get()) {
+		if (!hasNext()) {
 			throw new NoSuchElementException("All posts were consumed");
 		}
 

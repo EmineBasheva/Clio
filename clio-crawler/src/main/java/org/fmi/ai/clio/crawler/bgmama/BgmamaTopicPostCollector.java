@@ -8,4 +8,5 @@ public interface BgmamaTopicPostCollector extends Iterator<BgmamaTopicPost> {
 
 	public void close();
 
+	public boolean hasAny();
 }

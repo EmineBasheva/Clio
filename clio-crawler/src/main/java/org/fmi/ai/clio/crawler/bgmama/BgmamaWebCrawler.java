@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -73,6 +74,10 @@ public class BgmamaWebCrawler implements BgmamaTopicPostProducer {
 		String postURL = postElement.getElementsByClass("post-link")
 		      .attr(HTML_ABSOLUTE_HREF_ATTR);
 
+		if (StringUtils.isBlank(postURL)) {
+			return;
+		}
+		
 		long postTimestamp = parsePostTimestamp(
 		      postElement.getElementsByClass("post-date").text());
 
@@ -92,7 +97,7 @@ public class BgmamaWebCrawler implements BgmamaTopicPostProducer {
 			builder.withThankYouCount(Integer.parseInt(postThankYouCount));
 		}
 
-		LOG.info("Processed a post by {} in topic {} at {}", postAuthor, topicTitle,
+		LOG.info("{} - Processed a post by {} in topic {} at {}", LocalDateTime.now(), postAuthor, topicTitle,
 		      postURL);
 		collector.add(builder.build());
 	}
